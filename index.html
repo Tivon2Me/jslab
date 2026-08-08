@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltSpot - EV Charging Network</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="brand-header">
+            <h1>⚡ VoltSpot EV Network</h1>
+            <p class="tagline">Powering Your Next Journey with 100% Green Energy</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="stations.html">Stations</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="reserve.html">Book a Charger</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Requirement 1: Welcome Message Container -->
+        <div id="welcome-message-container" style="margin-bottom: 25px;"></div>
+
+        <section>
+            <h2>Fast, Reliable, Nationwide Charging</h2>
+            <p>Welcome to <strong>VoltSpot</strong>. Whether you need a quick 15-minute boost during a highway trip or a complete overnight charge, our smart hubs are built for performance and reliability.</p>
+            
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80" alt="Electric vehicle charging at VoltSpot station" class="hero-image">
+                <p class="caption">Figure 1: High-Speed Ultra-Fast DC Charging Station in Action.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Requirement 3: Dynamic Content (Live Fare Estimator) -->
+        <section class="card" style="border-left-color: #00d285;">
+            <h3>⚡ Quick Charging Cost Estimator</h3>
+            <p>Calculate your estimated charging session cost based on duration and charger speed:</p>
+            
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                <div style="flex: 1; min-width: 200px;">
+                    <label for="charging-hours">Duration (Hours):</label>
+                    <input type="number" id="charging-hours" min="0.5" step="0.5" value="1.0">
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <label for="charger-rate">Charger Rate:</label>
+                    <select id="charger-rate">
+                        <option value="5.00">Level 2 AC ($5.00/hr)</option>
+                        <option value="12.50">DC Fast ($12.50/hr)</option>
+                        <option value="22.00">Ultra-Fast DC ($22.00/hr)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="calc-fare-btn" class="btn" style="margin-top: 15px;">Calculate Estimate</button>
+            <div id="calc-result" style="margin-top: 15px; font-size: 1.1rem; display: none;"></div>
+        </section>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="reserve.html" class="btn">Reserve Your Bay Now &rarr;</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 VoltSpot Charging Network. All rights reserved.</p>
+    </footer>
+
+    <!-- Linked External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
