@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoltSpot - Station Locations</title>
+    <title>VoltSpot - Stations</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
         <div class="brand-header">
             <h1>⚡ VoltSpot EV Network</h1>
-            <p class="tagline">Find a Charging Hub Near You</p>
+            <p class="tagline">Find Active Charging Hubs</p>
         </div>
         <nav>
             <ul>
@@ -25,60 +24,38 @@
 
     <main>
         <section>
-            <h2>Active Charging Locations</h2>
-            
-            <!-- Requirement 3: Live Filter Search Field -->
-            <div style="margin-bottom: 25px;">
-                <label for="station-search"><strong>Search Locations or Amenities:</strong></label>
-                <input type="text" id="station-search" placeholder="Type to filter e.g., 'Downtown', 'Mall', 'Coffee'...">
+            <h2>Active Locations</h2>
+            <div style="margin-bottom: 20px;">
+                <label for="station-search">Filter Stations:</label>
+                <input type="text" id="station-search" placeholder="Type e.g., 'Downtown' or 'Mall'...">
             </div>
 
-            <div id="stations-list">
-                <article class="card station-card">
-                    <h3>1. Downtown Central Hub</h3>
-                    <p><strong>Address:</strong> 104 Main Street, City Center</p>
-                    <button class="btn btn-secondary toggle-details-btn" data-target="details-1">View Station Details ▼</button>
-                    
-                    <!-- Toggleable Dynamic Content -->
-                    <div id="details-1" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-                        <p><strong>Available Ports:</strong> 8 Ultra-Fast DC Chargers (CCS / NACS)</p>
-                        <p><strong>Amenities:</strong> Coffee Shop, High-Speed Wi-Fi, Restrooms</p>
-                        <a href="reserve.html" class="btn btn-sm">Book Here &rarr;</a>
-                    </div>
-                </article>
+            <article class="card station-card">
+                <h3>Downtown Central Hub</h3>
+                <p>104 Main Street, City Center</p>
+                <button class="btn btn-secondary toggle-details-btn" data-target="details-1">View Station Details ▼</button>
+                <div id="details-1" style="display: none; margin-top: 10px;">
+                    <p>Ports: 8 Ultra-Fast DC Chargers</p>
+                    <p>Amenities: Wi-Fi, Coffee Shop</p>
+                </div>
+            </article>
 
-                <article class="card station-card">
-                    <h3>2. Westside Mall Plaza</h3>
-                    <p><strong>Address:</strong> 450 West Avenue, Shopping District</p>
-                    <button class="btn btn-secondary toggle-details-btn" data-target="details-2">View Station Details ▼</button>
-                    
-                    <div id="details-2" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-                        <p><strong>Available Ports:</strong> 12 Level 2 Chargers, 4 Fast Chargers</p>
-                        <p><strong>Amenities:</strong> Shopping Access, Food Court, Cinema</p>
-                        <a href="reserve.html" class="btn btn-sm">Book Here &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card station-card">
-                    <h3>3. Highway Gateway Station</h3>
-                    <p><strong>Address:</strong> Exit 12, Interstate 95</p>
-                    <button class="btn btn-secondary toggle-details-btn" data-target="details-3">View Station Details ▼</button>
-                    
-                    <div id="details-3" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-                        <p><strong>Available Ports:</strong> 16 Ultra-Fast DC Chargers (350 kW)</p>
-                        <p><strong>Amenities:</strong> 24/7 Convenience Store, Drivers Lounge</p>
-                        <a href="reserve.html" class="btn btn-sm">Book Here &rarr;</a>
-                    </div>
-                </article>
-            </div>
+            <article class="card station-card">
+                <h3>Westside Mall Plaza</h3>
+                <p>450 West Avenue, Shopping District</p>
+                <button class="btn btn-secondary toggle-details-btn" data-target="details-2">View Station Details ▼</button>
+                <div id="details-2" style="display: none; margin-top: 10px;">
+                    <p>Ports: 12 Level 2 Chargers</p>
+                    <p>Amenities: Shopping, Food Court</p>
+                </div>
+            </article>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 VoltSpot Charging Network. All rights reserved.</p>
+        <p>&copy; 2026 VoltSpot Charging Network.</p>
     </footer>
 
-    <!-- Linked External JavaScript File -->
     <script src="script.js"></script>
 </body>
 </html>
