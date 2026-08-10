@@ -1,10 +1,7 @@
--- Create the database if it doesn't exist
 CREATE DATABASE IF NOT EXISTS voltspot_db;
 
--- Switch to the database
 USE voltspot_db;
 
--- Create the reservations table
 CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(100) NOT NULL,
