@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ----------------------------------------------------------------------
-    // 1. Personalized Welcome Message (Home Page - Requirement 1: 5 Marks)
+    // 1. Personalized Welcome Message (Home Page - Requirement 1)
     // ----------------------------------------------------------------------
     const welcomeContainer = document.getElementById('welcome-message-container');
     
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Display personalized welcome banner
         welcomeContainer.innerHTML = `
-            <div class="welcome-banner">
-                <h3>⚡ Welcome back, <span id="user-display-name">${escapeHTML(userName)}</span>!</h3>
-                <p>Ready to charge up? Check out our available hubs or book a bay ahead of time.</p>
-                <button id="change-name-btn" class="btn btn-sm">Change Name</button>
+            <div class="welcome-banner" style="background: #112240; padding: 15px; border-radius: 8px; border-left: 4px solid #00d285; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 5px 0;">⚡ Welcome back, <span id="user-display-name">${escapeHTML(userName)}</span>!</h3>
+                <p style="margin: 0 0 10px 0;">Ready to charge up? Check out our available hubs or book a bay ahead of time.</p>
+                <button id="change-name-btn" class="btn btn-sm" style="padding: 5px 10px; cursor: pointer;">Change Name</button>
             </div>
         `;
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const resultBox = document.getElementById('calc-result');
 
             if (!hoursInput || hoursInput <= 0) {
-                resultBox.innerHTML = '<span class="error-text">Please enter a valid duration in hours.</span>';
+                resultBox.innerHTML = '<span class="error-text" style="color: #e74c3c;">Please enter a valid duration in hours.</span>';
                 resultBox.style.display = 'block';
                 return;
             }
@@ -104,15 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------------------------
-    // 4. Form Validation & Confirmation Feedback (Reserve Page - Requirement 2: 10 Marks)
+    // 4. Form Validation & Database Submission (Reserve Page - Requirement 2 & 5)
     // ----------------------------------------------------------------------
     const reserveForm = document.getElementById('reservation-form');
 
     if (reserveForm) {
         reserveForm.addEventListener('submit', (event) => {
-            // Prevent default submission to handle via JavaScript validation
-            event.preventDefault();
-
             let isValid = true;
             clearFormErrors();
 
@@ -162,28 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
             }
 
-            // If form passes all validation criteria
-            if (isValid) {
-                const confirmationBox = document.getElementById('form-confirmation');
-                const selectedLocation = location.options[location.selectedIndex].text;
-                
-                // Show dynamic success alert/confirmation message
-                confirmationBox.innerHTML = `
-                    <div class="success-alert">
-                        ⚡ <strong>Reservation Confirmed!</strong><br>
-                        Thank you, <strong>${escapeHTML(fullname.value)}</strong>. Your bay at 
-                        <strong>${escapeHTML(selectedLocation)}</strong> is reserved for 
-                        <strong>${escapeHTML(date.value)}</strong> at <strong>${escapeHTML(time.value)}</strong>.
-                        A confirmation text has been sent to <strong>${escapeHTML(phone.value)}</strong>.
-                    </div>
-                `;
-                confirmationBox.style.display = 'block';
-
-                // Scroll to confirmation feedback
-                confirmationBox.scrollIntoView({ behavior: 'smooth' });
-
-                // Reset form fields
-                reserveForm.reset();
+            // If ANY validation fails, stop form submission to show errors.
+            // If validation passes, we DO NOT call preventDefault(), allowing POST to process_reserve.php
+            if (!isValid) {
+                event.preventDefault();
             }
         });
     }
@@ -213,11 +192,6 @@ function showError(inputElement, message) {
 function clearFormErrors() {
     document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
     document.querySelectorAll('.error-message').forEach(el => el.remove());
-    
-    const confirmationBox = document.getElementById('form-confirmation');
-    if (confirmationBox) {
-        confirmationBox.style.display = 'none';
-    }
 }
 
 // Security sanitizer against XSS
